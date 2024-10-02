@@ -133,3 +133,14 @@ Params: 25.36 M
 ## License
 
 This repository is released under the Apache 2.0 license as found in the [LICENSE](LICENSE) file.
+conda activate pvt
+sh dist_train.sh configs/pvt_v2/pvt_v2_b2_li.py 1 --data-path ./PlantVillage2
+
+pip install timm==0.3.2
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
+pip install mmcv==1.3.8
+
+python3 -c "import torch; print(torch.**version**); print(torch.cuda.is_available())"
+
+2.4.1+cu121
+True

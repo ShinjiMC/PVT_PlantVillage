@@ -32,7 +32,7 @@ def get_args_parser():
     parser = argparse.ArgumentParser('PVT training and evaluation script', add_help=False)
     parser.add_argument('--fp32-resume', action='store_true', default=False)
     parser.add_argument('--batch-size', default=32, type=int)
-    parser.add_argument('--epochs', default=300, type=int)
+    parser.add_argument('--epochs', default=100, type=int)
     parser.add_argument('--config', required=True, type=str, help='config')
 
     # Model parameters
