@@ -328,6 +328,8 @@ def _conv_filter(state_dict, patch_size=16):
 
 @register_model
 def pvt_v2_b0(pretrained=False, **kwargs):
+    kwargs.pop('pretrained_cfg', None)
+    kwargs.pop('pretrained_cfg_overlay', None)
     model = PyramidVisionTransformerV2(
         patch_size=4, embed_dims=[32, 64, 160, 256], num_heads=[1, 2, 5, 8], mlp_ratios=[8, 8, 4, 4], qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), depths=[2, 2, 2, 2], sr_ratios=[8, 4, 2, 1],
@@ -339,6 +341,8 @@ def pvt_v2_b0(pretrained=False, **kwargs):
 
 @register_model
 def pvt_v2_b1(pretrained=False, **kwargs):
+    kwargs.pop('pretrained_cfg', None)
+    kwargs.pop('pretrained_cfg_overlay', None)
     model = PyramidVisionTransformerV2(
         patch_size=4, embed_dims=[64, 128, 320, 512], num_heads=[1, 2, 5, 8], mlp_ratios=[8, 8, 4, 4], qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), depths=[2, 2, 2, 2], sr_ratios=[8, 4, 2, 1],
@@ -350,6 +354,8 @@ def pvt_v2_b1(pretrained=False, **kwargs):
 
 @register_model
 def pvt_v2_b2(pretrained=False, **kwargs):
+    kwargs.pop('pretrained_cfg', None)
+    kwargs.pop('pretrained_cfg_overlay', None)
     model = PyramidVisionTransformerV2(
         patch_size=4, embed_dims=[64, 128, 320, 512], num_heads=[1, 2, 5, 8], mlp_ratios=[8, 8, 4, 4], qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), depths=[3, 4, 6, 3], sr_ratios=[8, 4, 2, 1], **kwargs)
@@ -360,6 +366,8 @@ def pvt_v2_b2(pretrained=False, **kwargs):
 
 @register_model
 def pvt_v2_b3(pretrained=False, **kwargs):
+    kwargs.pop('pretrained_cfg', None)
+    kwargs.pop('pretrained_cfg_overlay', None)
     model = PyramidVisionTransformerV2(
         patch_size=4, embed_dims=[64, 128, 320, 512], num_heads=[1, 2, 5, 8], mlp_ratios=[8, 8, 4, 4], qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), depths=[3, 4, 18, 3], sr_ratios=[8, 4, 2, 1],
@@ -371,6 +379,9 @@ def pvt_v2_b3(pretrained=False, **kwargs):
 
 @register_model
 def pvt_v2_b4(pretrained=False, **kwargs):
+    
+    kwargs.pop('pretrained_cfg', None)
+    kwargs.pop('pretrained_cfg_overlay', None)
     model = PyramidVisionTransformerV2(
         patch_size=4, embed_dims=[64, 128, 320, 512], num_heads=[1, 2, 5, 8], mlp_ratios=[8, 8, 4, 4], qkv_bias=True,
         norm_layer=partial(nn.LayerNorm, eps=1e-6), depths=[3, 8, 27, 3], sr_ratios=[8, 4, 2, 1],
@@ -379,13 +390,22 @@ def pvt_v2_b4(pretrained=False, **kwargs):
 
     return model
 
-
 @register_model
 def pvt_v2_b5(pretrained=False, **kwargs):
+    kwargs.pop('pretrained_cfg', None)
+    kwargs.pop('pretrained_cfg_overlay', None)
+
     model = PyramidVisionTransformerV2(
-        patch_size=4, embed_dims=[64, 128, 320, 512], num_heads=[1, 2, 5, 8], mlp_ratios=[4, 4, 4, 4], qkv_bias=True,
-        norm_layer=partial(nn.LayerNorm, eps=1e-6), depths=[3, 6, 40, 3], sr_ratios=[8, 4, 2, 1],
-        **kwargs)
+        patch_size=4,
+        embed_dims=[64, 128, 320, 512],
+        num_heads=[1, 2, 5, 8],
+        mlp_ratios=[4, 4, 4, 4],
+        qkv_bias=True,
+        norm_layer=partial(nn.LayerNorm, eps=1e-6),
+        depths=[3, 6, 40, 3],
+        sr_ratios=[8, 4, 2, 1],
+        **kwargs
+    )
     model.default_cfg = _cfg()
 
     return model
