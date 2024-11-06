@@ -91,7 +91,7 @@ This dataset is ready to be used directly for training and validation.
 To evaluate a pre-trained PVT-Small model on the PotatoDR_Dataset validation set using a single GPU, run the following command:
 
 ```bash
-sh dist_train.sh configs/pvt_v2/pvt_v2_b2_li.py 1 --data-path ./PotatoDR_Dataset/val --resume ./checkpoints/pvt_v2_b2_li/checkpoint.pth --eval
+sh dist_train.sh configs/pvt_v2/pvt_v2_b2_li.py 1 --data-path ./PotatoDR_Dataset --resume ./checkpoints/pvt_v2_b2_li/checkpoint.pth --eval
 ```
 
 This will output the evaluation results, including accuracy and loss metrics. For example:
