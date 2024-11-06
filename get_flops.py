@@ -75,7 +75,7 @@ def main():
     model = create_model(
         args.model,
         pretrained=False,
-        num_classes=1000
+        num_classes=3
     )
     model.name = args.model
     if torch.cuda.is_available():
