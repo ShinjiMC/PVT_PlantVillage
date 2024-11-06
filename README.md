@@ -77,7 +77,7 @@ This dataset is ready to be used directly for training and validation.
 | Method           | Size | Acc@1 | #Params (M) | GFLOPs | Config                                   | Download                                                                                               |
 | ---------------- | :--: | :---: | :---------: | :----: | ---------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | PVT-V2-B0        | 224  | 96.78 |    3.41     |  0.57  | [config](configs/pvt_v2/pvt_v2_b0.py)    | 37Mb [[GitHub]](https://github.com/ShinjiMC/PVT_PlantVillage/releases/download/PVT2v1.0/pvt_v2_b0.zip) |
-| PVT-V2-B1        | 224  | 78.7  |    97.33    |  2.12  | [config](configs/pvt_v2/pvt_v2_b1.py)    | 143Mb [[GitHub]](https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b1.pth)                    |
+| PVT-V2-B1        | 224  | 97.33 |    13.5     |  2.12  | [config](configs/pvt_v2/pvt_v2_b1.py)    | 143Mb [[GitHub]](https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b1.pth)                    |
 | PVT-V2-B2-Linear | 224  | 97.78 |    22.04    |  3.92  | [config](configs/pvt_v2/pvt_v2_b2_li.py) | 233Mb [[GitHub]](https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b2_li.pth)                 |
 | PVT-V2-B2        | 224  | 98.44 |    24.85    |  4.04  | [config](configs/pvt_v2/pvt_v2_b2.py)    | 262Mb [[GitHub]](https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b2.pth)                    |
 | PVT-V2-B3        | 224  | 98.11 |    44.73    |  6.92  | [config](configs/pvt_v2/pvt_v2_b3.py)    | 472Mb [[GitHub]](https://github.com/whai362/PVT/releases/download/v2/pvt_v2_b3.pth)                    |
@@ -111,7 +111,7 @@ This will output the evaluation results, including accuracy and loss metrics. Fo
 To train the PVT-Small model on the PotatoDR_Dataset with a single GPU for 100 epochs, run the following command:
 
 ```bash
-sh dist_train.sh configs/pvt_v2/pvt_v2_b2_li.py 1 --epochs 100 --data-path ./PotatoDR_Dataset/train
+sh dist_train.sh configs/pvt_v2/pvt_v2_b2_li.py 1 --data-path ./PotatoDR_Dataset
 ```
 
 This will initiate the training process, using the dataset from the `train/` folder of the `PotatoDR_Dataset`. During training, the model will update its weights for 100 epochs, based on the training data.
