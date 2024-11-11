@@ -31,6 +31,10 @@ def sra_flops(h, w, r, dim):
 def li_sra_flops(h, w, dim):
     return 2 * h * w * 7 * 7 * dim
 
+def dsc_flops(h, w, in_channels, out_channels, kernel_size=3):
+    depthwise_flops = h * w * in_channels * (kernel_size ** 2)
+    pointwise_flops = h * w * in_channels * out_channels
+    return depthwise_flops + pointwise_flops
 
 def get_flops(model, input_shape):
     flops, params = get_model_complexity_info(model, input_shape, as_strings=False)
@@ -45,6 +49,16 @@ def get_flops(model, input_shape):
                                   model.block3[0].attn.dim) * len(model.block3)
             stage4 = li_sra_flops(H // 32, W // 32,
                                   model.block4[0].attn.dim) * len(model.block4)
+        elif 'ds' in model.name:  # calculate flops for PVTv2-DSC
+            stage1 = dsc_flops(H // 4, W // 4,
+                            model.block1[0].attn.dim, model.block1[0].attn.dim) * len(model.block1)
+            stage2 = dsc_flops(H // 8, W // 8,
+                            model.block2[0].attn.dim, model.block2[0].attn.dim) * len(model.block2)
+            stage3 = dsc_flops(H // 16, W // 16,
+                            model.block3[0].attn.dim, model.block3[0].attn.dim) * len(model.block3)
+            stage4 = dsc_flops(H // 32, W // 32,
+                            model.block4[0].attn.dim, model.block4[0].attn.dim) * len(model.block4)
+
         else:  # calculate flops of PVT/PVTv2
             stage1 = sra_flops(H // 4, W // 4,
                                model.block1[0].attn.sr_ratio,
